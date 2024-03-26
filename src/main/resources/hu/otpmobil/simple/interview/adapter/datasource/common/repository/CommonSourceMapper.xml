@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.otpmobil.simple.interview.adapter.datasource.common.repository.CommonSourceMapper">
+	<resultMap id="PartnerAddressResultMap" type="hu.otpmobil.simple.interview.domain.ledger.datasource.common.PartnerAddress">
+		<id column="partner_id" property="id"/>
+		<result column="partner_code" property="partnerCode"/>
+		<result column="partner_name" property="name"/>
+		<result column="bank_account_number" property="bankAccountNumber"/>
+		<result column="tax_number" property="taxNumber"/>
+		<result column="city" property="city"/>
+		<result column="zip" property="zip"/>
+		<result column="address" property="address"/>
+		<result column="country" property="countryCode"/>
+	</resultMap>
+	
+	<resultMap id="AbstractTransferResultMap" type="hu.otpmobil.simple.interview.domain.ledger.datasource.common.AbstractTransfer">
+		<id column="transfer_id" property="id"/>
+		<result column="ttype" property="type"/>
+		<result column="transfer_date" property="transferDate"/>
+		<result column="bank_booking_date" property="bankBookingDate"/>
+		<association property="partnerAddress" resultMap="PartnerAddressResultMap"/>
+	</resultMap>
+
+</mapper>

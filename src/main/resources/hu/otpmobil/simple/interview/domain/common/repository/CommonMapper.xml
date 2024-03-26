@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hu.otpmobil.simple.interview.domain.common.repository.CommonMapper">
+
+	<sql id="paginatorSQL">
+		<if test="filter.paging">
+			offset #{filter.pageNumber,jdbcType=NUMERIC} * #{filter.rowPerPage,jdbcType=NUMERIC} limit #{filter.rowPerPage,jdbcType=NUMERIC}
+		</if>
+	</sql>
+
+    <select id="nextId" resultType="java.lang.Long">
+        select nextval('seq_ledger'::regclass)
+    </select>
+
+</mapper>

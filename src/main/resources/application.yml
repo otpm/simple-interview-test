@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: '/interview'
+
+spring:
+  jta:
+    atomikos:
+      datasource:
+        max-pool-size: 10
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  profiles:
+    active: '@spring.profiles.active@'
+  liquibase:
+    change-log: 'classpath:db/changelog-master.xml'
+    default-schema: public
+
+interview:
+  activemq:
+    broker-url: ${activemq.broker.url}
+    username: ${activemq.username:}
+    password: ${activemq.password:}
+    common-service-in-queue-name: commonServiceIn
+    common-service-out-queue-name: commonServiceOut

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    #LOCAL
+    url: jdbc:postgresql://localhost:5433/otp-coconut
+    username: developer
+    password: password
+
+    #TEST
+#    url: jdbc:postgresql://testappdb12:5432/coconut0
+#    username: coconut
+#    password: wotan8
+
+    #PROD COPY
+#    url: jdbc:postgresql://localhost:5431/coconut
+#    username: lukacsk
+#    password: lk1221OTP
+
+logging:
+  level:
+    hu.otpmobil: debug

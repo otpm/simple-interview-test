@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="hu.otpmobil.simple.interview.adapter.datasource.advancement.repository.AdvancementPaidSourceMapper">
+	<resultMap id="AdvancementPaidTransferResultMap"
+		type="hu.otpmobil.simple.interview.domain.ledger.datasource.advancement.AdvancementPaidTransfer"
+		extends="hu.otpmobil.simple.interview.adapter.datasource.common.repository.CommonSourceMapper.AbstractTransferResultMap">
+		<result column="amount" property="amount" />
+	</resultMap>
+
+	<select id="selectByDate"
+		resultMap="AdvancementPaidTransferResultMap">
+		select transfer_id
+			, ttype
+			, transfer_date
+			, bank_booking_date
+			, amount
+			, partner_id
+			, partner_name
+			, bank_account_number
+			, tax_number
+			, city
+			, zip
+			, address
+			, country
+		from vw_ledger_advancement_paid
+		where transfer_date &lt; #{date, jdbcType=TIMESTAMP}
+	</select>
+
+</mapper>
