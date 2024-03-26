@@ -82,11 +82,16 @@ public class LedgerRow {
 		zip = partner.getZip();
 
 		String accountNumber = partner.getBankAccountNumber();
-		if (accountNumber == null || accountNumber.length() != 16 && accountNumber.length() != 24) {
+		if (accountNumber == null || accountNumber.length() != 16 && accountNumber.length() != 17 && accountNumber.length() != 24) {
 			return;
 		}
 		bankKey = accountNumber.substring(0, 8);
-		String part1 = accountNumber.substring(8, 16);
+		String part1;
+		if("-".equals(accountNumber.substring(8, 9))) {
+			part1 = accountNumber.substring(9, 17);
+		} else {
+			part1 = accountNumber.substring(8, 16);
+		}
 		bankAccountNumber = accountNumber.length() == 24 ? part1 + "-" + accountNumber.substring(16, 24) : part1;
 	}
 
